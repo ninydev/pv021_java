@@ -8,10 +8,8 @@ public class User {
     @Getter
     @Setter
     private String Name;
+
     private String Email;
-
-
-
     public String getEmail() {
         return Email;
     }
