@@ -26,5 +26,12 @@ public class MyArray implements Runnable
             System.out.println(myFriends[i]);
         }
 
+        val.setName("Valek");
+
+        System.out.println("My Friends");
+        for(int i = 0; i < 2; i++) {
+            System.out.println(myFriends[i]);
+        }
+
     }
 }
