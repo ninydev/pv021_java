@@ -9,31 +9,33 @@ import work.MyFirstWork;
 
 public class Main {
 
-    public static void main(String[] args){
-        Object s= new Contact();
-        //s.hashCode()
-        //s.toString()
-        //s.equals()
-        System.out.println(s.getClass());
-        if (s instanceof Contact )
-            ((Contact) s).setName("Sasha");
-
-        System.out.println(s);
-
-        Object d= new PhoneBook();
-        if (d instanceof Contact )
-            ((Contact) d).setName("Sasha");
-        else {
-            System.out.println("err");
-        }
-
-        try {
-            ((Contact) d).setName("Sasha");
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
 
 
+    public static void main(String[] args) {
+
+//        // Main.mainClonable(args);
+//        Object s= new Contact();
+//        //s.hashCode()
+//        //s.toString()
+//        //s.equals()
+//        System.out.println(s.getClass());
+//        if (s instanceof Contact )
+//            ((Contact) s).setName("Sasha");
+//
+//        System.out.println(s);
+//
+//        Object d= new PhoneBook();
+//        if (d instanceof Contact )
+//            ((Contact) d).setName("Sasha");
+//        else {
+//            System.out.println("err");
+//        }
+//
+//        try {
+//            ((Contact) d).setName("Sasha");
+//        } catch (Exception ex) {
+//            System.out.println(ex.getMessage());
+//        }
 
     }
 
@@ -45,15 +47,15 @@ public class Main {
         sasha.setName("Sasya");
         sasha.setNumber("+380965747708");
 
-        book.add(sasha);
-        System.out.println(sasha);
-        book.print();
-
-        sasha = null;
-        System.gc();
-
-        System.out.println(sasha);
-        book.print();
+//        book.add(sasha);
+//        System.out.println(sasha);
+//        book.print();
+//
+//        sasha = null;
+//        System.gc();
+//
+//        System.out.println(sasha);
+//        book.print();
 
 
 //        Contact p = sasha.clone();
@@ -64,13 +66,13 @@ public class Main {
 //        System.gc();
 //        System.out.println(p);
 
-//        System.out.println(" Before Method ");
-//        System.out.println(sasha);
-//
-//        book.doMe(sasha);
-//
-//        System.out.println("\n After Method ");
-//        System.out.println(sasha);
+        System.out.println(" Before Method ");
+        System.out.println(sasha);
+
+        book.doMe(sasha);
+
+        System.out.println("\n After Method ");
+        System.out.println(sasha);
 
 //        int a = 20;
 //
