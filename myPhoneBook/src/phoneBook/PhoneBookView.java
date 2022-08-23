@@ -21,8 +21,16 @@ public class PhoneBookView implements Runnable {
             System.out.print("Name: ");
             c.setName(in.nextLine());
 
+            if(model.searchByName(c.getName()) != null) {
+                throw new Exception("Name is Using ");
+            }
+
             System.out.print("Phone: ");
             c.setPhone(in.nextLine());
+
+            if(model.searchByPhone(c.getPhone()) != null) {
+                throw new Exception("Phone is Using");
+            }
 
             model.add(c);
         } catch (Exception ex) {
@@ -37,6 +45,8 @@ public class PhoneBookView implements Runnable {
         for (Contact c:model) {
             System.out.println(c);
         }
+        System.out.println("\n ----- ");
+        model.printAll();
     }
 
 

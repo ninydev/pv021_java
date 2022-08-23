@@ -1,12 +1,21 @@
 package phoneBook;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.*;
 
 public class PhoneBookModel implements Collection<Contact> {
 
     ArrayList<Contact> contacts = new ArrayList<>();
+    TreeMap<String, Contact> mapName =  new TreeMap<String, Contact>();
+    TreeMap<String, Contact> mapPhone =  new TreeMap<String, Contact>();
+
+    public Contact searchByName(String name){
+        return mapName.get(name);
+    }
+
+    public Contact searchByPhone(String phone){
+        return mapPhone.get(phone);
+    }
+
 
     /**
      * Ensures that this collection contains the specified element (optional
@@ -43,6 +52,8 @@ public class PhoneBookModel implements Collection<Contact> {
      */
     @Override
     public boolean add(Contact contact) {
+        mapName.put(contact.getName(), contact);
+        mapPhone.put(contact.getPhone(), contact);
         return contacts.add(contact);
     }
 
@@ -140,6 +151,21 @@ public class PhoneBookModel implements Collection<Contact> {
     public void clear() {
 
     }
+
+    /**
+     * Выводит систему с учетом ключей
+     */
+    public void printAll(){
+        System.out.println(" By Name");
+        for (Contact c:mapName.values()) {
+            System.out.println(c);
+        }
+        System.out.println(" By Phone");
+        for (Contact c: mapPhone.values()) {
+            System.out.println(c);
+        }
+    }
+
 
 
 
