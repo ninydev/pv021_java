@@ -3,8 +3,11 @@ import entities.Contact;
 public class Main {
     public static void main(String[] args) {
 
-        MyHomeLib lib = new MyHomeLib();
-        lib.run();
+        MyArrayList w = new MyArrayList();
+        w.run();
+
+//        MyHomeLib lib = new MyHomeLib();
+//        lib.run();
 
 //        MyArray work = new MyArray();
 //        work.run();
