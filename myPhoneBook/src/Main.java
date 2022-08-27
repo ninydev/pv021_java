@@ -1,11 +1,11 @@
-import filesOperations.SimpleFile;
-import phoneBook.PhoneBookView;
+import fileSerializable.StandartSerializable;
+
 
 public class Main {
     public static void main(String[] args) {
 
         try {
-            SimpleFile w = new SimpleFile();
+            StandartSerializable w = new StandartSerializable();
             w.run();
         } catch (Exception ex) {
 
