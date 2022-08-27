@@ -1,11 +1,15 @@
+import filesOperations.SimpleFile;
 import phoneBook.PhoneBookView;
 
 public class Main {
     public static void main(String[] args) {
 
-        PhoneBookView v = new PhoneBookView();
-        v.run();
+        try {
+            SimpleFile w = new SimpleFile();
+            w.run();
+        } catch (Exception ex) {
 
-
+        }
     }
+
 }

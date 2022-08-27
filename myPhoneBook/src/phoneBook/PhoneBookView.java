@@ -1,5 +1,6 @@
 package phoneBook;
 
+import javax.lang.model.element.Name;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -16,7 +17,7 @@ public class PhoneBookView implements Runnable {
     {
         try{
             System.out.println("Create Contact");
-            Contact c = new Contact();
+            Contact c = new Contact("", "");
 
             System.out.print("Name: ");
             c.setName(in.nextLine());
