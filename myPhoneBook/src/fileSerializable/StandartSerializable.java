@@ -2,6 +2,7 @@ package fileSerializable;
 
 import java.io.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.thoughtworks.xstream.XStream;
 
 public class StandartSerializable implements Runnable {
 
@@ -56,11 +57,20 @@ public class StandartSerializable implements Runnable {
         }
     }
 
+
+    void xml() {
+        XStream xstream = new XStream();
+        XmlPerson s = new XmlPerson("Sasha", 45, 180, true);
+
+        System.out.println(xstream.toXML(s));
+    }
+
     @Override
     public void run() {
         try {
-            jsonSerializable();
-            jsonDeserializable();
+            xml();
+//            jsonSerializable();
+//            jsonDeserializable();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
 
