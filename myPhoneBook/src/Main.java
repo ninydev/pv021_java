@@ -1,4 +1,5 @@
 
+import MyThreads.MyExchanger.WorkExchanger;
 import MyThreads.MySemaphore.MySemaphoreWork;
 import MyThreads.MyWaitNotify.WorkWait;
 
@@ -7,7 +8,7 @@ import MyThreads.MyWaitNotify.WorkWait;
 public class Main {
     public static void main(String[] args) {
 
-        MySemaphoreWork work = new MySemaphoreWork();
+        WorkExchanger work = new WorkExchanger();
         work.run();
 
         System.out.println("\n\n -- Main finish \n -- \n\n");
