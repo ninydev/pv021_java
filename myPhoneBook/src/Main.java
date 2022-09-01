@@ -1,17 +1,15 @@
 
-import MyThreads.MyExchanger.WorkExchanger;
-import MyThreads.MySemaphore.MySemaphoreWork;
-import MyThreads.MyWaitNotify.WorkWait;
+import MyStream.Base.BaseStream;
 
 
 
 public class Main {
     public static void main(String[] args) {
 
-        WorkExchanger work = new WorkExchanger();
+        BaseStream work = new BaseStream();
         work.run();
 
-        System.out.println("\n\n -- Main finish \n -- \n\n");
+        System.out.println("\n\n -- Main finish \n -- \n");
     }
 
 }
