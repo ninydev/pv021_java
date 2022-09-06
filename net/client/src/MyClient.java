@@ -17,6 +17,8 @@ public class MyClient implements Runnable
             // Отправим 5 строчек на сервер
             for (int i = 0; i < 5; i++) {
                 out.println("Hello " + i);
+                String str = in.readLine();
+                System.out.println(str);
             }
 
             // Отправим команду на окончание связи

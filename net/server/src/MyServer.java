@@ -1,5 +1,4 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -23,6 +22,8 @@ public class MyServer implements Runnable
 
                 // Получаю поток на вход
                 BufferedReader in = new BufferedReader( new InputStreamReader(socket.getInputStream()));
+                // Поток на вывод
+                PrintWriter out = new PrintWriter(new BufferedWriter( new OutputStreamWriter(socket.getOutputStream())), true);
 
                 while (true) {
                     // Читаю очередную строку
@@ -31,6 +32,7 @@ public class MyServer implements Runnable
                     if(str.equals("END")) {
                         break;
                     }
+                    out.println(str);
                     // Вывожу входящую информацию на экран сервера
                     System.out.println(str);
                 }
