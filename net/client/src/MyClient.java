@@ -22,7 +22,7 @@ public class MyClient implements Runnable
             }
 
             // Отправим команду на окончание связи
-            out.println("END");
+            out.println("BYE");
 
             socket.close();
 
