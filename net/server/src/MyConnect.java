@@ -54,16 +54,17 @@ public class MyConnect extends Thread implements Runnable
                 while (true) {
                     String msg = in.readLine();
                     if(msg.equals("BYE")) {
+                        System.out.println(" Клиент отключился ");
+                        socket.close();
+                        connectList.remove(this);
                         break;
+                    } else {
+                        sendMessageToAll(msg);
                     }
-                    sendMessageToAll(msg);
                 }
             } catch (Exception ex) {
                 System.out.println(" Ошибка открытия потока данных");
                 System.out.println(ex.getMessage());
-            } finally {
-                System.out.println(" Клиент отключился ");
-                connectList.remove(this);
             }
 
     }
