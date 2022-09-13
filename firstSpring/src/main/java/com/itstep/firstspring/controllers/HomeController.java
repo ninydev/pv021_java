@@ -13,13 +13,13 @@ public class HomeController
 {
     private int count = 0;
 
-    @GetMapping("/err") // Маршрут, по которому будет отвечать данный метод контроллера
+    @GetMapping("/hherr") // Маршрут, по которому будет отвечать данный метод контроллера
     public String home1(){
         return "home";
     }
 
 
-    @GetMapping("/") // Маршрут, по которому будет отвечать данный метод контроллера
+    @GetMapping("/hh") // Маршрут, по которому будет отвечать данный метод контроллера
     public String home(
             Model model // Модель представления данных, которую мне нужно наполнить
             // это аналог ViewData ViewBug из asp....
