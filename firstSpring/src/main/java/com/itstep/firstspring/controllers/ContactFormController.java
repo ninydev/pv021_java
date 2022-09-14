@@ -2,13 +2,9 @@ package com.itstep.firstspring.controllers;
 
 import com.itstep.firstspring.entities.SiteContact;
 import com.itstep.firstspring.repos.SiteContactsRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.Nullable;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 public class ContactFormController {
@@ -19,6 +15,12 @@ public class ContactFormController {
         this.contactsRepository = contactsRepository;
     }
 
+
+    /**
+     * Создание записи в базе данных -- Create
+     * @param siteContact
+     * @return
+     */
     @PostMapping("/contact") // Маршрут, по которому будет отвечать данный метод контроллера
     public String sendContact(
             SiteContact siteContact // На основе параметров запроса я могу сразу содать сущность
@@ -39,5 +41,58 @@ public class ContactFormController {
 //                + message ;
 
     }
+
+
+
+
+    /**
+     * Получение всех записей по данной сущности -- Read
+     * @return
+     */
+    @GetMapping("/contacts")
+    public Iterable<SiteContact> readAll(){
+        return contactsRepository.findAll();
+    }
+
+    /**
+     * Получение одной записи по ID -- Read
+     *
+     * @return
+     */
+    @GetMapping("/contacts/{id}")
+    public Optional<SiteContact> readById(
+            @PathVariable(name="id") Long id
+    ){
+        return contactsRepository.findById(id);
+    }
+
+    /**
+     * Обновление записи в базе данных по ее Id
+     * @param id
+     * @param siteContact
+     * @return
+     */
+    @PutMapping("/contacts/{id}")
+    public SiteContact updateById(
+            @PathVariable(name="id") Long id,
+            SiteContact siteContact
+    ){
+        return contactsRepository.save(siteContact);
+
+    }
+
+    /**
+     * Удаление записи по id -- Delete
+     * @param id
+     */
+    @DeleteMapping("/contacts/{id}")
+    public void deleteById(
+            @PathVariable(name="id") Long id
+    ){
+        contactsRepository.deleteById(id);
+    }
+
+
+
 
 }
