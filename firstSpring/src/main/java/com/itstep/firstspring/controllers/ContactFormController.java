@@ -27,6 +27,9 @@ public class ContactFormController {
 //            @RequestParam(value = "phone") String phone,
 //            @RequestParam(value = "message") @Nullable String message
     ){
+//        if (siteContact.getName().length() < 10) {
+//            return " Name len < 10";
+//        }
         contactsRepository.save(siteContact); // Я сохраняю сущность в соответствующем репозитории
         return "Ok";
 //        return "Incoming: "
