@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Portfolio</title>
+</head>
+<body>
+<h1> All Portfolio </h1>
+
+<ul th:each="p: ${portfolios}">
+    <li th:text="${p.name}"></li>
+</ul>
+
+</body>
+</html>
