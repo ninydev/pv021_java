@@ -63,6 +63,14 @@ public class PortfolioItemController {
         return "/portfolio/form-update";
     }
 
+    @GetMapping("/portfolio/delete/{id}")
+    public RedirectView delete(
+            @PathVariable(name="id") Long id
+    ) {
+        portfolioItemRepository.deleteById(id);
+        return new RedirectView("/portfolio");
+    }
+
 
 
 }
