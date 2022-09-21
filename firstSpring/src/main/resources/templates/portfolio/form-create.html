@@ -8,13 +8,21 @@
 
 <form action="/portfolio/store" method="post">
 
-  <input type="text" name="name">
+  <input type="text" name="name"><br>
     <select name="category_id">
         <option
                 th:each="category: ${categories}"
                 th:value="${category.id}"
                 th:text="${category.name}"></option>
-    </select>
+    </select><br>
+
+    <select name="tags_id" multiple>
+        <option
+                th:each="tag: ${tags}"
+                th:value="${tag.id}"
+                th:text="${tag.name}"></option>
+    </select><br>
+
   <input type="submit" value="Create">
 </form>
 

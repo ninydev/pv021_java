@@ -5,6 +5,8 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -17,6 +19,11 @@ public class PortfolioItem {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private PortfolioCategory category;
+
+    //*---------------------------------
+    // Many to Many
+    @ManyToMany
+    private Set<PortfolioTag> tags = new HashSet<>();
 
 
     //*---------------------------------
