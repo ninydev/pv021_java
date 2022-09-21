@@ -5,18 +5,20 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.UUID;
+import java.util.Set;
 
 @Entity
 @Data
-@Table(name = "portfolio_items")
-public class PortfolioItem {
+@Table(name = "portfolio_categories")
+public class PortfolioCategory {
 
     //*---------------------------------
     // One to Many
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "category_id")
-    private PortfolioCategory category;
+    private Set<PortfolioItem> items;
+
+
 
 
     //*---------------------------------
@@ -25,15 +27,9 @@ public class PortfolioItem {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    private String name; // Наименование работы
-    private String mainImg; // Ссылка на главное изображение
-    @Column(columnDefinition="TEXT")
-    private String description; // Опсиание работы
-    private Integer price; // Стоимость
-    private Integer time; // Затраченное время в часах
+    private String name; // Наименование категории
 
     @CreationTimestamp
     private Date created_at; // = new Date();
-
 
 }

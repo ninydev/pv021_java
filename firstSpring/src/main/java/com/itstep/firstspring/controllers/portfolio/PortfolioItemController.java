@@ -2,23 +2,27 @@ package com.itstep.firstspring.controllers.portfolio;
 
 
 import com.itstep.firstspring.entities.portfolio.PortfolioItem;
+import com.itstep.firstspring.repos.portfolio.PortfolioCategoryRepository;
 import com.itstep.firstspring.repos.portfolio.PortfolioItemRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class PortfolioItemController {
 
-    private final PortfolioItemRepository portfolioItemRepository;
+    private final PortfolioItemRepository itemRepository;
+    private final PortfolioCategoryRepository categoryRepository;
 
     public PortfolioItemController(
-        PortfolioItemRepository portfolioItemRepository
+        PortfolioItemRepository itemRepository,
+        PortfolioCategoryRepository categoryRepository
     ) {
-        this.portfolioItemRepository = portfolioItemRepository;
+        this.itemRepository = itemRepository;
+        this.categoryRepository = categoryRepository;
+
     }
 
 
@@ -29,7 +33,7 @@ public class PortfolioItemController {
      */
     @GetMapping("/portfolio")
     public String index(Model model){
-        model.addAttribute("portfolios", portfolioItemRepository.findAll());
+        model.addAttribute("portfolios", itemRepository.findAll());
         return "portfolio/index";
     }
 
@@ -38,8 +42,10 @@ public class PortfolioItemController {
      * @return
      */
     @GetMapping("/portfolio/create")
-    public String create(){
+    public String create(Model model){
+        model.addAttribute("categories", categoryRepository.findAll());
         return "/portfolio/form-create";
+
     }
 
 
@@ -48,8 +54,12 @@ public class PortfolioItemController {
      * @param portfolio
      */
     @PostMapping("/portfolio/store")
-    public RedirectView store(PortfolioItem portfolio){
-        portfolioItemRepository.save(portfolio);
+    public RedirectView store(
+            @Param("category_id") long category_id,
+            PortfolioItem portfolio
+    ){
+        portfolio.setCategory(categoryRepository.findById(category_id).get());
+        itemRepository.save(portfolio);
         return new RedirectView("/portfolio");
     }
 
@@ -58,7 +68,7 @@ public class PortfolioItemController {
             Model model,
             @PathVariable(name="id") Long id
     ){
-        PortfolioItem p = portfolioItemRepository.findById(id).get();
+        PortfolioItem p = itemRepository.findById(id).get();
         model.addAttribute("portfolio", p);
         return "/portfolio/form-update";
     }
@@ -67,7 +77,7 @@ public class PortfolioItemController {
     public RedirectView delete(
             @PathVariable(name="id") Long id
     ) {
-        portfolioItemRepository.deleteById(id);
+        itemRepository.deleteById(id);
         return new RedirectView("/portfolio");
     }
 

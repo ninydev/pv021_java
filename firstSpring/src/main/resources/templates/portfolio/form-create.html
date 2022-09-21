@@ -9,6 +9,12 @@
 <form action="/portfolio/store" method="post">
 
   <input type="text" name="name">
+    <select name="category_id">
+        <option
+                th:each="category: ${categories}"
+                th:value="${category.id}"
+                th:text="${category.name}"></option>
+    </select>
   <input type="submit" value="Create">
 </form>
 
