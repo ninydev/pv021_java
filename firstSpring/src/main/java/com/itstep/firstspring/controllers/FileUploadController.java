@@ -1,10 +1,14 @@
 package com.itstep.firstspring.controllers;
 
 
-import com.itstep.firstspring.exceptions.StorageFileNotFoundException;
+import com.itstep.firstspring.exceptions.storage.StorageFileNotFoundException;
 import com.itstep.firstspring.services.storage.StorageService;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +57,27 @@ public class FileUploadController {
                 "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
 
-    @PostMapping("/")
+    /**
+     * Плохой стиль программирования в целом
+     * @param file
+     * @return
+     */
+    @PostMapping("badfiles")
+    public String badSaveFile( @RequestParam("file") MultipartFile file){
+        Path destinationFile = Path.of(file.getOriginalFilename());
+        try (InputStream inputStream = file.getInputStream()) {
+            Files.copy(inputStream, destinationFile,
+                    StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        return "redirect:/files";
+    }
+
+
+    @PostMapping("/files")
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes) {
 
@@ -61,7 +85,7 @@ public class FileUploadController {
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
 
-        return "redirect:/";
+        return "redirect:/files";
     }
 
     @ExceptionHandler(StorageFileNotFoundException.class)

@@ -1,4 +1,4 @@
-package com.itstep.firstspring.exceptions;
+package com.itstep.firstspring.exceptions.storage;
 
 public class StorageException extends RuntimeException {
 

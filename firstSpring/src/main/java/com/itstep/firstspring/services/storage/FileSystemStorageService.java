@@ -9,8 +9,8 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.stream.Stream;
 
-import com.itstep.firstspring.exceptions.StorageException;
-import com.itstep.firstspring.exceptions.StorageFileNotFoundException;
+import com.itstep.firstspring.exceptions.storage.StorageException;
+import com.itstep.firstspring.exceptions.storage.StorageFileNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
