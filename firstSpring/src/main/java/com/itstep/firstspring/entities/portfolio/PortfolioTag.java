@@ -1,10 +1,12 @@
 package com.itstep.firstspring.entities.portfolio;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -14,8 +16,14 @@ public class PortfolioTag {
 
     //*---------------------------------
     // Many to Many
-    @ManyToMany (mappedBy="tags")
-    private Set<PortfolioItem> items;
+//    @ManyToMany (fetch = FetchType.LAZY,
+//            cascade = {
+//                    CascadeType.PERSIST,
+//                    CascadeType.MERGE
+//            },
+//            mappedBy = "tags")
+//    @JsonIgnore
+//    private Set<PortfolioItem> items = new HashSet<>();
 
     //*---------------------------------
     @Id

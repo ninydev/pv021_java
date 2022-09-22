@@ -22,8 +22,15 @@ public class PortfolioItem {
 
     //*---------------------------------
     // Many to Many
-    @ManyToMany
-    private Set<PortfolioTag> tags = new HashSet<>();
+//    @ManyToMany (fetch = FetchType.LAZY,
+//            cascade = {
+//                    CascadeType.PERSIST,
+//                    CascadeType.MERGE
+//            })
+//    @JoinTable(name = "portfolio_items_tags",
+//            joinColumns = { @JoinColumn(name = "portfolio_id") },
+//            inverseJoinColumns = { @JoinColumn(name = "tag_id") })
+//    private Set<PortfolioTag> tags = new HashSet<>();
 
 
     //*---------------------------------

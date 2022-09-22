@@ -73,12 +73,12 @@ public class PortfolioItemController {
 //        itemRepository.save(portfolio);
 
         // ArrayList<PortfolioTag> tags = new ArrayList<>();
-        for (int i = 0; i < tags_id.length; i++)
-        {
-
-            portfolio.getTags().add( tagRepository.findById(tags_id[i]).get() );
-         //   tags.add(tagRepository.findById(tags_id[i]).get());
-        }
+//        for (int i = 0; i < tags_id.length; i++)
+//        {
+//
+//            portfolio.getTags().add( tagRepository.findById(tags_id[i]).get() );
+//         //   tags.add(tagRepository.findById(tags_id[i]).get());
+//        }
 
         itemRepository.save(portfolio);
         return new RedirectView("/portfolio");

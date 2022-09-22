@@ -1,5 +1,6 @@
 package com.itstep.firstspring.entities.portfolio;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -15,6 +16,7 @@ public class PortfolioCategory {
     //*---------------------------------
     // One to Many
     @OneToMany(mappedBy = "category")
+    @JsonIgnore
     private Set<PortfolioItem> items;
 
 
