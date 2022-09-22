@@ -16,14 +16,14 @@ public class PortfolioTag {
 
     //*---------------------------------
     // Many to Many
-//    @ManyToMany (fetch = FetchType.LAZY,
-//            cascade = {
-//                    CascadeType.PERSIST,
-//                    CascadeType.MERGE
-//            },
-//            mappedBy = "tags")
-//    @JsonIgnore
-//    private Set<PortfolioItem> items = new HashSet<>();
+    @ManyToMany (fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },
+            mappedBy = "tags")
+    @JsonIgnore
+    private Set<PortfolioItem> items = new HashSet<>();
 
     //*---------------------------------
     @Id
