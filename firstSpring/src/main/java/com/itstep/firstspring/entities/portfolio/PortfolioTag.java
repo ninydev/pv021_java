@@ -14,7 +14,7 @@ public class PortfolioTag {
 
     //*---------------------------------
     // Many to Many
-    @ManyToMany
+    @ManyToMany (mappedBy="tags")
     private Set<PortfolioItem> items;
 
     //*---------------------------------

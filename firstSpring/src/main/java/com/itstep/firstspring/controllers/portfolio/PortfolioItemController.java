@@ -72,7 +72,7 @@ public class PortfolioItemController {
         portfolio.setCategory(categoryRepository.findById(category_id).get());
 //        itemRepository.save(portfolio);
 
-        ArrayList<PortfolioTag> tags = new ArrayList<>();
+        // ArrayList<PortfolioTag> tags = new ArrayList<>();
         for (int i = 0; i < tags_id.length; i++)
         {
 

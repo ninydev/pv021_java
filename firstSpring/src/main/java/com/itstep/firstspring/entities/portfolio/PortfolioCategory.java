@@ -14,8 +14,7 @@ public class PortfolioCategory {
 
     //*---------------------------------
     // One to Many
-    @OneToMany
-    @JoinColumn(name = "category_id")
+    @OneToMany(mappedBy = "category")
     private Set<PortfolioItem> items;
 
 
