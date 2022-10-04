@@ -14,6 +14,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -70,14 +71,17 @@ public class PortfolioItemController {
             PortfolioItem portfolio
     ){
         portfolio.setCategory(categoryRepository.findById(category_id).get());
-//        itemRepository.save(portfolio);
+        itemRepository.save(portfolio);
 
         // ArrayList<PortfolioTag> tags = new ArrayList<>();
-        for (int i = 0; i < tags_id.length; i++)
-        {
-
-            portfolio.getTags().add( tagRepository.findById(tags_id[i]).get() );
-         //   tags.add(tagRepository.findById(tags_id[i]).get());
+        if(tags_id != null){
+            Set<PortfolioTag> tags = new HashSet<>();
+            for (int i = 0; i < tags_id.length; i++)
+            {
+                PortfolioTag t = tagRepository.getReferenceById(tags_id[i]);
+                tags.add(t);
+            }
+            portfolio.setTags(tags);
         }
 
         itemRepository.save(portfolio);

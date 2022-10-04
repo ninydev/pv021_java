@@ -17,13 +17,14 @@ public class PortfolioItem {
 
     //*---------------------------------
     // One to Many
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private PortfolioCategory category;
 
     //*---------------------------------
     // Many to Many
-    @ManyToMany (fetch = FetchType.LAZY,
+    @ManyToMany(
+            fetch = FetchType.LAZY,
             cascade = {
                     CascadeType.PERSIST,
                     CascadeType.MERGE
